@@ -306,7 +306,7 @@
     noticeEl.textContent = "Warning: missing authId — please sign in again.";
   } else {
     // Fetch temp email from backend and set readonly input
-    fetch("http://localhost:8080/api/temp/" + encodeURIComponent(authId))
+    fetch("/api/temp/" + encodeURIComponent(authId))
       .then(r => {
         if (!r.ok) throw new Error('no temp');
         return r.json();
@@ -356,7 +356,7 @@
     const payload = { authId, email, phoneNumber: fullPhone };
 
     try {
-      const res = await fetch("http://localhost:8080/api/connect-phone", {
+      const res = await fetch("/api/connect-phone", {
         method: "POST",
         headers: {"Content-Type":"application/json"},
         body: JSON.stringify(payload)

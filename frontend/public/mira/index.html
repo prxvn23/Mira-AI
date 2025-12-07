@@ -73,7 +73,7 @@
 
   <script>
     function signIn() {
-      fetch("http://localhost:8080/api/auth/google")
+      fetch("/api/auth/google")
         .then(res => res.json())
         .then(data => {
           window.location.href = data.url;
