@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Mira - Sign In</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center px-4">
+
+  <div class="w-full max-w-md bg-white/20 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/30 p-10">
+
+    <!-- Tagline -->
+    <p class="text-center text-xs tracking-widest text-white/80 mb-2">
+      YOUR AI CALENDAR ASSISTANT
+    </p>
+
+    <!-- Title -->
+    <h1 class="text-4xl font-extrabold text-center text-white drop-shadow-xl">
+      Welcome to Mira
+    </h1>
+
+    <p class="text-white/80 text-center mt-2">
+      Your smart AI that organizes, reminds, and updates your calendar — all by phone.
+    </p>
+
+    <!-- Feature List -->
+    <ul class="text-white/90 text-sm mt-5 space-y-1">
+      <li>✔ Calls before meetings with reminders</li>
+      <li>✔ Reschedules instantly through voice</li>
+      <li>✔ Syncs seamlessly with Google Calendar</li>
+      <li>✔ No app required — works with any phone</li>
+    </ul>
+
+    <!-- Sign In Button -->
+    <button 
+      onclick="signIn()"
+      class="mt-8 w-full bg-white text-gray-900 font-semibold py-3 rounded-2xl shadow-xl hover:bg-gray-100 hover:scale-[1.03] transition-all flex items-center justify-center gap-3"
+    >
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-6 h-6" />
+      Continue with Google
+    </button>
+
+    <!-- Subtext -->
+    <p class="text-center text-white/80 text-sm mt-3">
+      Fast. Simple. 100% secure with Google OAuth.
+    </p>
+
+    <!-- Info Card -->
+    <div class="mt-6 bg-white/10 backdrop-blur-lg text-white/90 border border-white/20 rounded-xl p-4">
+      After approval, you will return here to link your phone number.
+    </div>
+
+    
+
+    <!-- Call Mira Link -->
+    <div class="mt-8 text-center">
+      <a href="/mira/callmira.html" class="text-white hover:underline">
+        Already connected? Call Mira →
+      </a>
+    </div>
+
+    <!-- Legal -->
+    <p class="mt-6 text-center text-white/60 text-xs leading-relaxed">
+      We never store your Google password.  
+      Google OAuth ensures complete security of your account.
+    </p>
+
+  </div>
+
+  <script>
+    function signIn() {
+      fetch("http://localhost:8080/api/auth/google")
+        .then(res => res.json())
+        .then(data => {
+          window.location.href = data.url;
+        })
+        .catch(err => alert("Error: " + err));
+    }
+  </script>
+
+</body>
+</html>

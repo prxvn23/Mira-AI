@@ -1,0 +1,5 @@
+com\miraassistant\model\UserCalendar.class
+com\miraassistant\controller\MainController.class
+com\miraassistant\MiraBackendApplication.class
+com\miraassistant\repo\UserCalendarRepository.class
+com\miraassistant\service\GoogleService.class

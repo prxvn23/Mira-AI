@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Mira - Connect Calendar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center px-4">
+
+  <div class="w-full max-w-md bg-white/20 backdrop-blur-xl border border-white/30 shadow-xl rounded-3xl p-10">
+
+    <h1 class="text-3xl font-extrabold text-center text-white">Connect Calendar</h1>
+    <p class="text-white/80 text-center mt-2">We will use the Google account you signed in with.</p>
+
+    <div id="notice" class="mt-4 text-sm text-yellow-200"></div>
+
+    <form id="connectForm" class="mt-4 space-y-4" onsubmit="submitForm(event)">
+      <!-- readonly email (prefilled from OAuth) -->
+      <div>
+        <label class="text-white font-semibold">Google Email</label>
+        <input id="email" type="email" readonly
+               class="w-full mt-2 h-12 px-4 rounded-xl bg-white/60 outline-none cursor-not-allowed" />
+        <div id="email-error" class="text-sm text-yellow-200 mt-1 inline-error"></div>
+      </div>
+
+      <!-- country code + phone input -->
+      <div>
+        <label class="text-white font-semibold">Phone Number</label>
+
+        <!-- wrapper: makes select fixed width and phone input fill remaining space -->
+        <div class="flex gap-3 mt-2 items-center">
+          <!-- select: fixed width, same height as input -->
+          <div class="relative w-36 flex-shrink-0">
+            <select id="cc" class="w-full h-12 px-3 pr-8 rounded-xl bg-white/70 appearance-none outline-none">
+              <!-- <options list (truncated here for brevity) --> 
+              <option value="+93">🇦🇫 Afghanistan (+93)</option>
+<option value="+355">🇦🇱 Albania (+355)</option>
+<option value="+213">🇩🇿 Algeria (+213)</option>
+<option value="+1-684">🇦🇸 American Samoa (+1-684)</option>
+<option value="+376">🇦🇩 Andorra (+376)</option>
+<option value="+244">🇦🇴 Angola (+244)</option>
+<option value="+1-264">🇦🇮 Anguilla (+1-264)</option>
+<option value="+672">🇦🇶 Antarctica (+672)</option>
+<option value="+1-268">🇦🇬 Antigua & Barbuda (+1-268)</option>
+<option value="+54">🇦🇷 Argentina (+54)</option>
+<option value="+374">🇦🇲 Armenia (+374)</option>
+<option value="+297">🇦🇼 Aruba (+297)</option>
+<option value="+61">🇦🇺 Australia (+61)</option>
+<option value="+43">🇦🇹 Austria (+43)</option>
+<option value="+994">🇦🇿 Azerbaijan (+994)</option>
+
+<option value="+1-242">🇧🇸 Bahamas (+1-242)</option>
+<option value="+973">🇧🇭 Bahrain (+973)</option>
+<option value="+880">🇧🇩 Bangladesh (+880)</option>
+<option value="+1-246">🇧🇧 Barbados (+1-246)</option>
+<option value="+375">🇧🇾 Belarus (+375)</option>
+<option value="+32">🇧🇪 Belgium (+32)</option>
+<option value="+501">🇧🇿 Belize (+501)</option>
+<option value="+229">🇧🇯 Benin (+229)</option>
+<option value="+1-441">🇧🇲 Bermuda (+1-441)</option>
+<option value="+975">🇧🇹 Bhutan (+975)</option>
+<option value="+591">🇧🇴 Bolivia (+591)</option>
+<option value="+387">🇧🇦 Bosnia & Herzegovina (+387)</option>
+<option value="+267">🇧🇼 Botswana (+267)</option>
+<option value="+55">🇧🇷 Brazil (+55)</option>
+<option value="+673">🇧🇳 Brunei (+673)</option>
+<option value="+359">🇧🇬 Bulgaria (+359)</option>
+<option value="+226">🇧🇫 Burkina Faso (+226)</option>
+<option value="+257">🇧🇮 Burundi (+257)</option>
+
+<option value="+855">🇰🇭 Cambodia (+855)</option>
+<option value="+237">🇨🇲 Cameroon (+237)</option>
+<option value="+1">🇨🇦 Canada (+1)</option>
+<option value="+238">🇨🇻 Cape Verde (+238)</option>
+<option value="+1-345">🇰🇾 Cayman Islands (+1-345)</option>
+<option value="+236">🇨🇫 Central African Republic (+236)</option>
+<option value="+235">🇹🇩 Chad (+235)</option>
+<option value="+56">🇨🇱 Chile (+56)</option>
+<option value="+86">🇨🇳 China (+86)</option>
+<option value="+61">🇨🇽 Christmas Island (+61)</option>
+<option value="+57">🇨🇴 Colombia (+57)</option>
+<option value="+269">🇰🇲 Comoros (+269)</option>
+<option value="+243">🇨🇩 Congo, DR (+243)</option>
+<option value="+242">🇨🇬 Congo (+242)</option>
+<option value="+682">🇨🇰 Cook Islands (+682)</option>
+<option value="+506">🇨🇷 Costa Rica (+506)</option>
+<option value="+385">🇭🇷 Croatia (+385)</option>
+<option value="+53">🇨🇺 Cuba (+53)</option>
+<option value="+357">🇨🇾 Cyprus (+357)</option>
+<option value="+420">🇨🇿 Czech Republic (+420)</option>
+
+<option value="+45">🇩🇰 Denmark (+45)</option>
+<option value="+253">🇩🇯 Djibouti (+253)</option>
+<option value="+1-767">🇩🇲 Dominica (+1-767)</option>
+<option value="+1-809">🇩🇴 Dominican Republic (+1-809)</option>
+
+<option value="+593">🇪🇨 Ecuador (+593)</option>
+<option value="+20">🇪🇬 Egypt (+20)</option>
+<option value="+503">🇸🇻 El Salvador (+503)</option>
+<option value="+240">🇬🇶 Equatorial Guinea (+240)</option>
+<option value="+291">🇪🇷 Eritrea (+291)</option>
+<option value="+372">🇪🇪 Estonia (+372)</option>
+<option value="+268">🇸🇿 Eswatini (+268)</option>
+<option value="+251">🇪🇹 Ethiopia (+251)</option>
+
+<option value="+679">🇫🇯 Fiji (+679)</option>
+<option value="+358">🇫🇮 Finland (+358)</option>
+<option value="+33">🇫🇷 France (+33)</option>
+
+<option value="+241">🇬🇦 Gabon (+241)</option>
+<option value="+220">🇬🇲 Gambia (+220)</option>
+<option value="+995">🇬🇪 Georgia (+995)</option>
+<option value="+49">🇩🇪 Germany (+49)</option>
+<option value="+233">🇬🇭 Ghana (+233)</option>
+<option value="+350">🇬🇮 Gibraltar (+350)</option>
+<option value="+30">🇬🇷 Greece (+30)</option>
+<option value="+299">🇬🇱 Greenland (+299)</option>
+<option value="+1-473">🇬🇩 Grenada (+1-473)</option>
+<option value="+502">🇬🇹 Guatemala (+502)</option>
+<option value="+224">🇬🇳 Guinea (+224)</option>
+<option value="+245">🇬🇼 Guinea-Bissau (+245)</option>
+<option value="+592">🇬🇾 Guyana (+592)</option>
+
+<option value="+509">🇭🇹 Haiti (+509)</option>
+<option value="+504">🇭🇳 Honduras (+504)</option>
+<option value="+852">🇭🇰 Hong Kong (+852)</option>
+<option value="+36">🇭🇺 Hungary (+36)</option>
+
+<option value="+354">🇮🇸 Iceland (+354)</option>
+<option value="+91">🇮🇳 India (+91)</option>
+<option value="+62">🇮🇩 Indonesia (+62)</option>
+<option value="+98">🇮🇷 Iran (+98)</option>
+<option value="+964">🇮🇶 Iraq (+964)</option>
+<option value="+353">🇮🇪 Ireland (+353)</option>
+<option value="+972">🇮🇱 Israel (+972)</option>
+<option value="+39">🇮🇹 Italy (+39)</option>
+
+<option value="+1-876">🇯🇲 Jamaica (+1-876)</option>
+<option value="+81">🇯🇵 Japan (+81)</option>
+<option value="+962">🇯🇴 Jordan (+962)</option>
+
+<option value="+7">🇰🇿 Kazakhstan (+7)</option>
+<option value="+254">🇰🇪 Kenya (+254)</option>
+<option value="+686">🇰🇮 Kiribati (+686)</option>
+<option value="+383">🇽🇰 Kosovo (+383)</option>
+<option value="+965">🇰🇼 Kuwait (+965)</option>
+<option value="+996">🇰🇬 Kyrgyzstan (+996)</option>
+
+<option value="+856">🇱🇦 Laos (+856)</option>
+<option value="+371">🇱🇻 Latvia (+371)</option>
+<option value="+961">🇱🇧 Lebanon (+961)</option>
+<option value="+266">🇱🇸 Lesotho (+266)</option>
+<option value="+231">🇱🇷 Liberia (+231)</option>
+<option value="+218">🇱🇾 Libya (+218)</option>
+<option value="+423">🇱🇮 Liechtenstein (+423)</option>
+<option value="+370">🇱🇹 Lithuania (+370)</option>
+<option value="+352">🇱🇺 Luxembourg (+352)</option>
+
+<option value="+853">🇲🇴 Macau (+853)</option>
+<option value="+389">🇲🇰 North Macedonia (+389)</option>
+<option value="+261">🇲🇬 Madagascar (+261)</option>
+<option value="+265">🇲🇼 Malawi (+265)</option>
+<option value="+60">🇲🇾 Malaysia (+60)</option>
+<option value="+960">🇲🇻 Maldives (+960)</option>
+<option value="+223">🇲🇱 Mali (+223)</option>
+<option value="+356">🇲🇹 Malta (+356)</option>
+<option value="+692">🇲🇭 Marshall Islands (+692)</option>
+<option value="+596">🇲🇶 Martinique (+596)</option>
+<option value="+222">🇲🇷 Mauritania (+222)</option>
+<option value="+230">🇲🇺 Mauritius (+230)</option>
+<option value="+262">🇾🇹 Mayotte (+262)</option>
+<option value="+52">🇲🇽 Mexico (+52)</option>
+<option value="+691">🇫🇲 Micronesia (+691)</option>
+<option value="+373">🇲🇩 Moldova (+373)</option>
+<option value="+377">🇲🇨 Monaco (+377)</option>
+<option value="+976">🇲🇳 Mongolia (+976)</option>
+<option value="+382">🇲🇪 Montenegro (+382)</option>
+<option value="+1-664">🇲🇸 Montserrat (+1-664)</option>
+<option value="+212">🇲🇦 Morocco (+212)</option>
+<option value="+258">🇲🇿 Mozambique (+258)</option>
+<option value="+95">🇲🇲 Myanmar (+95)</option>
+
+<option value="+264">🇳🇦 Namibia (+264)</option>
+<option value="+674">🇳🇷 Nauru (+674)</option>
+<option value="+977">🇳🇵 Nepal (+977)</option>
+<option value="+31">🇳🇱 Netherlands (+31)</option>
+<option value="+64">🇳🇿 New Zealand (+64)</option>
+<option value="+505">🇳🇮 Nicaragua (+505)</option>
+<option value="+227">🇳🇪 Niger (+227)</option>
+<option value="+234">🇳🇬 Nigeria (+234)</option>
+<option value="+850">🇰🇵 North Korea (+850)</option>
+<option value="+47">🇳🇴 Norway (+47)</option>
+
+<option value="+968">🇴🇲 Oman (+968)</option>
+
+<option value="+92">🇵🇰 Pakistan (+92)</option>
+<option value="+680">🇵🇼 Palau (+680)</option>
+<option value="+970">🇵🇸 Palestine (+970)</option>
+<option value="+507">🇵🇦 Panama (+507)</option>
+<option value="+675">🇵🇬 Papua New Guinea (+675)</option>
+<option value="+595">🇵🇾 Paraguay (+595)</option>
+<option value="+51">🇵🇪 Peru (+51)</option>
+<option value="+63">🇵🇭 Philippines (+63)</option>
+<option value="+48">🇵🇱 Poland (+48)</option>
+<option value="+351">🇵🇹 Portugal (+351)</option>
+<option value="+1-787">🇵🇷 Puerto Rico (+1-787)</option>
+
+<option value="+974">🇶🇦 Qatar (+974)</option>
+
+<option value="+40">🇷🇴 Romania (+40)</option>
+<option value="+7">🇷🇺 Russia (+7)</option>
+<option value="+250">🇷🇼 Rwanda (+250)</option>
+
+<option value="+1-869">🇰🇳 St. Kitts & Nevis (+1-869)</option>
+<option value="+1-758">🇱🇨 St. Lucia (+1-758)</option>
+<option value="+1-784">🇻🇨 St. Vincent (+1-784)</option>
+<option value="+685">🇼🇸 Samoa (+685)</option>
+<option value="+378">🇸🇲 San Marino (+378)</option>
+<option value="+239">🇸🇹 Sao Tome & Principe (+239)</option>
+<option value="+966">🇸🇦 Saudi Arabia (+966)</option>
+<option value="+221">🇸🇳 Senegal (+221)</option>
+<option value="+381">🇷🇸 Serbia (+381)</option>
+<option value="+248">🇸🇨 Seychelles (+248)</option>
+<option value="+232">🇸🇱 Sierra Leone (+232)</option>
+<option value="+65">🇸🇬 Singapore (+65)</option>
+<option value="+421">🇸🇰 Slovakia (+421)</option>
+<option value="+386">🇸🇮 Slovenia (+386)</option>
+<option value="+677">🇸🇧 Solomon Islands (+677)</option>
+<option value="+252">🇸🇴 Somalia (+252)</option>
+<option value="+27">🇿🇦 South Africa (+27)</option>
+<option value="+82">🇰🇷 South Korea (+82)</option>
+<option value="+34">🇪🇸 Spain (+34)</option>
+<option value="+94">🇱🇰 Sri Lanka (+94)</option>
+<option value="+249">🇸🇩 Sudan (+249)</option>
+<option value="+597">🇸🇷 Suriname (+597)</option>
+<option value="+46">🇸🇪 Sweden (+46)</option>
+<option value="+41">🇨🇭 Switzerland (+41)</option>
+<option value="+963">🇸🇾 Syria (+963)</option>
+
+<option value="+886">🇹🇼 Taiwan (+886)</option>
+<option value="+992">🇹🇯 Tajikistan (+992)</option>
+<option value="+255">🇹🇿 Tanzania (+255)</option>
+<option value="+66">🇹🇭 Thailand (+66)</option>
+<option value="+228">🇹🇬 Togo (+228)</option>
+<option value="+676">🇹🇴 Tonga (+676)</option>
+<option value="+1-868">🇹🇹 Trinidad & Tobago (+1-868)</option>
+<option value="+216">🇹🇳 Tunisia (+216)</option>
+<option value="+90">🇹🇷 Türkiye (+90)</option>
+<option value="+993">🇹🇲 Turkmenistan (+993)</option>
+<option value="+688">🇹🇻 Tuvalu (+688)</option>
+
+<option value="+256">🇺🇬 Uganda (+256)</option>
+<option value="+380">🇺🇦 Ukraine (+380)</option>
+<option value="+971">🇦🇪 UAE (+971)</option>
+<option value="+44">🇬🇧 United Kingdom (+44)</option>
+<option value="+1">🇺🇸 United States (+1)</option>
+<option value="+598">🇺🇾 Uruguay (+598)</option>
+<option value="+998">🇺🇿 Uzbekistan (+998)</option>
+
+<option value="+678">🇻🇺 Vanuatu (+678)</option>
+<option value="+379">🇻🇦 Vatican City (+379)</option>
+<option value="+58">🇻🇪 Venezuela (+58)</option>
+<option value="+84">🇻🇳 Vietnam (+84)</option>
+
+<option value="+967">🇾🇪 Yemen (+967)</option>
+
+<option value="+260">🇿🇲 Zambia (+260)</option>
+<option value="+263">🇿🇼 Zimbabwe (+263)</option>
+
+              <!-- continue full list as you had earlier -->
+            </select>
+            <!-- small custom arrow to ensure clean look across browsers -->
+            <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd" />
+            </svg>
+          </div>
+
+          <!-- phone input: fills rest of row, same height -->
+          <input id="phone" type="tel" required placeholder="Enter phone number"
+                 class="flex-1 h-12 px-4 rounded-xl bg-white/70 focus:ring-2 focus:ring-indigo-300 outline-none" />
+        </div>
+
+        <div id="phone-error" class="text-sm text-yellow-200 mt-1 inline-error"></div>
+      </div>
+
+      <button class="w-full bg-white font-bold py-3 rounded-xl shadow-xl hover:bg-gray-100 hover:scale-[1.03] transition-all">
+        Link Calendar
+      </button>
+    </form>
+
+    <div class="text-center mt-6">
+      <a href="/mira/index.html" class="text-white/90 hover:underline">Back to Sign In</a>
+    </div>
+
+  </div>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const authId = urlParams.get("authId");
+  const noticeEl = document.getElementById('notice');
+  const emailEl = document.getElementById('email');
+
+  if (!authId) {
+    noticeEl.textContent = "Warning: missing authId — please sign in again.";
+  } else {
+    // Fetch temp email from backend and set readonly input
+    fetch("http://localhost:8080/api/temp/" + encodeURIComponent(authId))
+      .then(r => {
+        if (!r.ok) throw new Error('no temp');
+        return r.json();
+      })
+      .then(data => {
+        if (data && data.email) {
+          emailEl.value = data.email;
+        } else {
+          noticeEl.textContent = "Email not available. Please sign in again.";
+        }
+      })
+      .catch(err => {
+        console.warn("temp fetch failed:", err);
+        noticeEl.textContent = "Email not available automatically. Please sign in again.";
+      });
+  }
+
+  function clearErrors() {
+    document.getElementById('email-error').textContent = '';
+    document.getElementById('phone-error').textContent = '';
+    noticeEl.textContent = '';
+  }
+
+  async function submitForm(e) {
+    e.preventDefault();
+    clearErrors();
+
+    if (!authId) {
+      alert("Missing authId; please sign in again.");
+      return;
+    }
+
+    const email = emailEl.value.trim();           // readonly, prefilled
+    const country = document.getElementById('cc').value;
+    const number = document.getElementById('phone').value.trim();
+    const fullPhone = country + number;
+
+    if (!email) {
+      document.getElementById('email-error').textContent = "Email missing — please sign in again.";
+      return;
+    }
+    if (!number) {
+      document.getElementById('phone-error').textContent = "Please enter a phone number.";
+      return;
+    }
+
+    const payload = { authId, email, phoneNumber: fullPhone };
+
+    try {
+      const res = await fetch("http://localhost:8080/api/connect-phone", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+
+      if (res.status === 409) {
+        if (data.error === 'email_in_use') {
+          document.getElementById('email-error').textContent = data.message || 'Email already in use.';
+        } else if (data.error === 'phone_in_use') {
+          document.getElementById('phone-error').textContent = data.message || 'Phone already in use.';
+        } else if (data.error === 'already_linked') {
+          noticeEl.textContent = data.message || 'This account is already linked.';
+        } else {
+          noticeEl.textContent = data.message || 'Conflict detected.';
+        }
+        return;
+      }
+
+      if (!res.ok) {
+        noticeEl.textContent = data.error || 'An error occurred.';
+        return;
+      }
+
+      // success
+      alert("Linked successfully!");
+      window.location.href = "/mira/callmira.html";
+
+    } catch (err) {
+      noticeEl.textContent = 'Network error: ' + err.message;
+    }
+  }
+</script>
+
+</body>
+</html>

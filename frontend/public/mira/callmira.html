@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Call MIRA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center 
+             bg-gradient-to-br from-[#8e5cff] via-[#c06ce6] to-[#e6936f] 
+             text-white px-6">
+
+  <!-- MAIN HERO SECTION -->
+  <div class="text-center max-w-2xl animate-fadeIn">
+
+    <p class="tracking-widest text-sm mb-4 opacity-90">
+      YOUR AI CALENDAR ASSISTANT
+    </p>
+
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-xl">
+      Mira. Your AI Assistant.<br/>
+      That Organizes, Reminds,<br/>
+      and Reschedules — All by Phone.
+    </h1>
+
+    <p class="mt-6 text-lg opacity-90 leading-relaxed">
+      MIRA calls you before meetings, updates your calendar on demand,<br/>
+      and manages your schedule through simple voice conversations.
+    </p>
+
+    <!-- CALL BUTTON -->
+    <div class="mt-10 flex justify-center">
+      <button 
+        onclick="callMira()"
+        class="flex items-center gap-3 bg-white text-gray-900 font-semibold py-3 px-6 
+               rounded-full shadow-xl hover:scale-[1.03] transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5a2 2 0 012-2h1.28a2 2 0 011.96 1.57l.52 2.3a2 2 0 01-.57 1.94L7.3 10.7a15.05 
+                   15.05 0 006 6l1.89-1.89a2 2 0 011.94-.57l2.3.52A2 2 0 0121 
+                   16.72V18a2 2 0 01-2 2h-1C9.82 20 4 14.18 4 7V6a2 2 0 01-2-2z" />
+        </svg>
+        Call MIRA: +91 80 3127 2577
+      </button>
+    </div>
+
+    <div class="mt-10">
+      <a href="index.html" class="text-white/90 underline hover:text-white">Back to Home</a>
+    </div>
+
+  </div>
+
+  <script>
+    function callMira() {
+      alert("Calling MIRA… (Integrate Bolna API here)");
+    }
+  </script>
+
+</body>
+</html>

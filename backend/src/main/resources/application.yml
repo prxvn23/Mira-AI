@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/miraassistant
+
+google:
+  clientId: "482217576234-6f6h55nq4tesgolauqkmcuv26t634mv3.apps.googleusercontent.com"
+  clientSecret: "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"
+  redirectUri: "http://localhost:8080/api/oauth2/callback"
+
+frontendRedirect: http://localhost:3000/mira/connect.html
+
